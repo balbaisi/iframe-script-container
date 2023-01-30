@@ -50,30 +50,16 @@ export default class ScriptContainer extends React.Component {
     ifrw.document.write(this.state.docString);
     ifrw.document.close();
   }
+  
+  componentDidMount()
+  {
+  	this.submitTryit()
+  }
 
   render()
   {
-    let params = {};
-    if (this.state.toggle)
-    {
-      params = {
-        style : "danger",
-        click : this.submitRemoveit.bind(this),
-        text : "Remove"
-      }
-    }
-    else {
-      params = {
-        style : "info",
-        click : this.submitTryit.bind(this),
-        text: "Execute"
-      }
-    }
     return (
         <div id="iframeContainer">
-          <Button bsStyle={params.style} onClick={params.click} >
-            {params.text}
-          </Button>
         <div id="iframewrapper"> </div>
       </div>);
   }
